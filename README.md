@@ -26,6 +26,7 @@ Launch with `antigravity-ide` or the **Antigravity IDE** desktop entry. If your 
 
 ```sh
 xdg-mime default antigravity-ide-url-handler.desktop x-scheme-handler/antigravity
+xdg-mime default antigravity-ide-url-handler.desktop x-scheme-handler/antigravity-ide
 ```
 
 ## Automatic updates / publishing
@@ -53,7 +54,7 @@ It can also be triggered manually from the Playground Actions tab, including bef
 6. Ensure one of `PRIVATE_REPO_TOKEN`, `GH_TOKEN`, or `GH_RELEASE_TOKEN` in Playground can write **Contents** in **Persie0/antigravity-ide-arch**.
 7. In Playground, run **Actions → Antigravity IDE AUR sync → Run workflow**. The AUR server accepts pushes only for package names available to your AUR account.
 
-For strict AUR host verification the workflow also expects the secret `AUR_KNOWN_HOSTS`, containing the **verified** `aur.archlinux.org` SSH known-hosts entry. Determine and verify the fingerprint independently before saving the entry. The workflow deliberately never uses `StrictHostKeyChecking=no`.
+For strict AUR host verification the workflow also expects the secret `AUR_KNOWN_HOSTS`, containing the **verified** `aur.archlinux.org` SSH known-hosts entry. To collect the host's ED25519 public key, run `ssh-keyscan -t ed25519 aur.archlinux.org > aur-known-hosts` followed by `ssh-keygen -lf aur-known-hosts -E sha256`. Independently check the fingerprint before trusting it (the Arch Linux forum and AUR mailing list have documented `SHA256:RFzBCUItH9LZS0cKB5UE6ceAYhBD5C8GeOBip8Z11+4`); save the entire `aur-known-hosts` file contents as the secret. The workflow deliberately never uses `StrictHostKeyChecking=no`.
 
 An AUR package is a build recipe and metadata in the AUR Git repository, not a binary package hosted by AUR. The completed, locally built `*.pkg.tar.zst` is installed by `pacman`.
 
