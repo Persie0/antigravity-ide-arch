@@ -73,7 +73,7 @@ class PackageUpdateTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             p = Path(tmp) / "PKGBUILD"
             p.write_text(self.ORIGINAL)
-            with patch.object(updater, "fetch_page", return_value=self.url("2.5.5", "100")), \
+            with patch.object(updater, "fetch_page", return_value=ReleaseParsingTests().url("2.5.5", "100")), \
                  patch.object(updater, "download_and_hash", side_effect=AssertionError("must not download")):
                 self.assertFalse(updater.update(p))
             self.assertEqual(p.read_text(), self.ORIGINAL)
