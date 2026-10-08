@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Antigravity IDE URL Handler
+Comment=Open Antigravity authentication and deep links
+Exec=antigravity-ide --open-url %U
+Icon=antigravity-ide
+Type=Application
+NoDisplay=true
+Terminal=false
+StartupNotify=true
+Categories=Development;IDE;
+MimeType=x-scheme-handler/antigravity;

@@ -1,0 +1,10 @@
+# Only source recipes and metadata are committed.
+*.pkg.tar.*
+*.src.tar.*
+*.tar.gz
+*.tar.zst
+*.sig
+pkg/
+src/
+__pycache__/
+*.pyc
